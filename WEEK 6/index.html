@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GATHERING</title>
+<link rel="stylesheet" href="style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+<body>
+<header>
+<nav class="navbar">
+<div class="logo">
+GATHERING <span>Events</span>
+</div>
+<ul class="nav-links">
+<li><a href="#">Home</a></li>
+<li><a href="#">Services</a></li>
+<li><a href="#">Events</a></li>
+<li><a href="#">Pricing</a></li>
+<li><a href="#">Contact</a></li>
+</ul>
+<a href="#" class="btn">Start Planning</a>
+</nav>
+</header>
+<!-- HERO -->
+<section class="hero">
+<div class="hero-text">
+<p class="tag">EVENT MANAGEMENT IN ONE PLACE</p>
+<h1>
+Run Your Complete <span>Event</span><br>
+Without Any Stress
+</h1>
+<p>
+Manage bookings, guests, schedules, vendors and payments
+from one professional dashboard.
+</p>
+<div class="hero-buttons">
+<a href="#" class="btn">Start Planning</a>
+<a href="#" class="btn2">Learn More</a>
+</div>
+</div>
+<div class="schedule-card">
+<h4>TODAY • MAIN HALL</h4>
+<h3>Live Schedule</h3>
+<div class="row">
+<span>09:00</span>
+<p>Guest Registration</p>
+<small>DONE</small>
+</div>
+
+<div class="row">
+<span>10:00</span>
+<p>Opening Ceremony</p>
+<small>LIVE</small>
+</div>
+
+<div class="row">
+<span>12:00</span>
+<p>Lunch Break</p>
+<small>UPCOMING</small>
+</div>
+
+<div class="row">
+<span>02:00</span>
+<p>Music Performance</p>
+<small>UPCOMING</small>
+</div>
+
+<div class="row">
+<span>05:00</span>
+<p>Closing Ceremony</p>
+<small>UPCOMING</small>
+</div>
+
+</div>
+</section>
+<!-- SERVICES -->
+<section class="services">
+<h2>Our Services</h2>
+<div class="service-grid">
+<div class="card">
+<i class="fa-solid fa-ring"></i>
+<h2>Wedding</h2>
+<p>₹2000 / Person</p>
+<input type="number" id="wedding" placeholder="No. of People">
+<button class="btn" onclick="bill('wedding',2000,'weddingTotal')">Calculate</button>
+<p id="weddingTotal">Total : ₹0</p>
+</div>
+
+<div class="card">
+<i class="fa-solid fa-cake-candles"></i>
+<h2>Birthday</h2>
+<p>₹1000 / Person</p>
+<input type="number" id="birthday" placeholder="No. of People">
+<button class="btn" onclick="bill('birthday',1000,'birthdayTotal')">Calculate</button>
+<p id="birthdayTotal">Total : ₹0</p>
+</div>
+
+<div class="card">
+<i class="fa-solid fa-building"></i>
+<h2>Corporate</h2>
+<p>₹1500 / Person</p>
+<input type="number" id="corporate" placeholder="No. of People">
+<button class="btn" onclick="bill('corporate',1500,'corporateTotal')">Calculate</button>
+<p id="corporateTotal">Total : ₹0</p>
+</div>
+
+<div class="card">
+<i class="fa-solid fa-music"></i>
+<h2>Concert</h2>
+<p>₹2500 / Person</p>
+<input type="number" id="concert" placeholder="No. of People">
+<button class="btn" onclick="bill('concert',2500,'concertTotal')">Calculate</button>
+<p id="concertTotal">Total : ₹0</p>
+</div>
+
+</div>
+</section>
+<!-- CONTACT -->
+<section class="contact">
+<div>
+<h2>Contact Us</h2>
+<p>Email : info@gatheringevents.com</p>
+
+<p>Phone : +91 9876543210</p>
+
+<p>Location : Banglore</p>
+</div>
+<form id="bookingForm">
+
+    <input
+        type="text"
+        id="customerName"
+        placeholder="Name"
+        required
+    >
+
+    <input
+        type="email"
+        id="customerEmail"
+        placeholder="Email"
+        required
+    >
+
+    <select id="eventType" required>
+        <option value="">Select Event</option>
+        <option value="Wedding">Wedding</option>
+        <option value="Birthday">Birthday</option>
+        <option value="Corporate">Corporate</option>
+        <option value="Concert">Concert</option>
+    </select>
+
+    <textarea
+        id="message"
+        placeholder="Message"
+        required
+    ></textarea>
+
+    <button type="submit">Send Message</button>
+
+</form>
+</section>
+<!-- ================= BOOKING MANAGEMENT ================= -->
+
+<section class="booking-management">
+
+    <h2>Manage Event Bookings</h2>
+
+    <p class="crud-description">
+        Create, view, update and delete event bookings.
+    </p>
+
+    <!-- UPDATE FORM -->
+
+    <div id="editBox" class="edit-box" style="display:none;">
+
+        <h3>Edit Booking</h3>
+
+        <input type="hidden" id="editId">
+
+        <input
+            type="text"
+            id="editName"
+            placeholder="Name"
+        >
+
+        <input
+            type="email"
+            id="editEmail"
+            placeholder="Email"
+        >
+
+        <select id="editEvent">
+
+            <option value="Wedding">Wedding</option>
+            <option value="Birthday">Birthday</option>
+            <option value="Corporate">Corporate</option>
+            <option value="Concert">Concert</option>
+
+        </select>
+
+        <textarea
+            id="editMessage"
+            placeholder="Message"
+        ></textarea>
+
+        <button class="btn" onclick="updateBooking()">
+            Update Booking
+        </button>
+
+        <button
+            class="cancel-btn"
+            onclick="cancelEdit()"
+        >
+            Cancel
+        </button>
+
+    </div>
+
+
+    <!-- READ TABLE -->
+
+    <div class="table-container">
+
+        <table class="booking-table">
+
+            <thead>
+
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Event</th>
+                    <th>Message</th>
+                    <th>Actions</th>
+                </tr>
+
+            </thead>
+
+            <tbody id="bookingTableBody">
+
+                <!-- Data will come from MongoDB -->
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>
+</section>
+
+<section>
+<h2>Event Bill</h2>
+<table border="1" cellpadding="5" cellspacing="0">
+<tr>
+<th>Description</th>
+<th>Amount</th>
+</tr>
+
+<tr>
+<td>Subtotal</td>
+<td id="subtotal">₹0</td>
+</tr>
+
+<tr>
+<td>GST (18%)</td>
+<td id="gst">₹0</td>
+</tr>
+
+<tr>
+<td>Service Charge</td>
+<td id="service">₹500</td>
+</tr>
+
+<tr>
+<th>Total Amount</th>
+<th id="grand">₹0</th>
+</tr>
+</table>
+<br>
+<button class="btn" onclick="generateBill()">Generate Bill</button>
+</section>
+<script>
+function bill(id, price, result) {
+
+    let people = document.getElementById(id).value;
+
+    let total = people * price;
+
+    document.getElementById(result).innerHTML =
+        "Total : ₹" + total;
+}
+
+
+function generateBill() {
+
+    let subtotal =
+        (document.getElementById("wedding").value || 0) * 2000 +
+        (document.getElementById("birthday").value || 0) * 1000 +
+        (document.getElementById("corporate").value || 0) * 1500 +
+        (document.getElementById("concert").value || 0) * 2500;
+
+    let gst = subtotal * 18 / 100;
+
+    let service = 500;
+
+    let grandTotal = subtotal + gst + service;
+
+    document.getElementById("subtotal").innerHTML =
+        "₹" + subtotal;
+
+    document.getElementById("gst").innerHTML =
+        "₹" + gst;
+
+    document.getElementById("service").innerHTML =
+        "₹" + service;
+
+    document.getElementById("grand").innerHTML =
+        "₹" + grandTotal;
+}
+document
+.getElementById("bookingForm")
+.addEventListener("submit", async function(e) {
+
+    e.preventDefault();
+
+    const booking = {
+
+        name: document.getElementById("customerName").value,
+
+        email: document.getElementById("customerEmail").value,
+
+        event: document.getElementById("eventType").value,
+
+        message: document.getElementById("message").value
+    };
+
+    try {
+
+        const response = await fetch("/api/events", {
+
+            method: "POST",
+
+            headers: {
+                "Content-Type": "application/json"
+            },
+
+            body: JSON.stringify(booking)
+
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            throw new Error(data.message);
+        }
+
+        alert("Booking created successfully!");
+
+        document.getElementById("bookingForm").reset();
+
+        loadBookings();
+
+    }
+
+    catch(error) {
+
+        console.error(error);
+
+        alert("Error creating booking");
+
+    }
+
+});
+async function loadBookings() {
+
+    try {
+
+        const response =
+            await fetch("/api/events");
+
+        const bookings =
+            await response.json();
+
+        const table =
+            document.getElementById("bookingTableBody");
+
+        table.innerHTML = "";
+
+        if (bookings.length === 0) {
+
+            table.innerHTML = `
+                <tr>
+                    <td colspan="5">
+                        No bookings found
+                    </td>
+                </tr>
+            `;
+
+            return;
+        }
+
+
+        bookings.forEach(function(booking) {
+
+            const row = document.createElement("tr");
+
+            row.innerHTML = `
+
+                <td>${booking.name}</td>
+
+                <td>${booking.email}</td>
+
+                <td>${booking.event}</td>
+
+                <td>${booking.message}</td>
+
+                <td>
+
+                    <button
+                        class="edit-btn"
+                        onclick="editBooking('${booking._id}')"
+                    >
+                        Edit
+                    </button>
+
+                    <button
+                        class="delete-btn"
+                        onclick="deleteBooking('${booking._id}')"
+                    >
+                        Delete
+                    </button>
+
+                </td>
+
+            `;
+
+            table.appendChild(row);
+
+        });
+
+    }
+
+    catch(error) {
+
+        console.error(error);
+
+        alert("Unable to load bookings");
+
+    }
+
+}
+async function editBooking(id) {
+
+    try {
+
+        const response =
+            await fetch("/api/events/" + id);
+
+        const booking =
+            await response.json();
+
+        if (!response.ok) {
+            throw new Error(booking.message);
+        }
+
+        document.getElementById("editId").value =
+            booking._id;
+
+        document.getElementById("editName").value =
+            booking.name;
+
+        document.getElementById("editEmail").value =
+            booking.email;
+
+        document.getElementById("editEvent").value =
+            booking.event;
+
+        document.getElementById("editMessage").value =
+            booking.message;
+
+        document.getElementById("editBox").style.display =
+            "block";
+
+        document.getElementById("editBox")
+            .scrollIntoView({
+                behavior: "smooth"
+            });
+
+    }
+
+    catch(error) {
+
+        console.error(error);
+
+        alert("Unable to load booking");
+
+    }
+
+}
+
+
+async function updateBooking() {
+
+    const id =
+        document.getElementById("editId").value;
+
+    const updatedBooking = {
+
+        name:
+            document.getElementById("editName").value,
+
+        email:
+            document.getElementById("editEmail").value,
+
+        event:
+            document.getElementById("editEvent").value,
+
+        message:
+            document.getElementById("editMessage").value
+
+    };
+
+
+    try {
+
+        const response =
+            await fetch("/api/events/" + id, {
+
+                method: "PUT",
+
+                headers: {
+                    "Content-Type": "application/json"
+                },
+
+                body: JSON.stringify(updatedBooking)
+
+            });
+
+
+        const data =
+            await response.json();
+
+
+        if (!response.ok) {
+            throw new Error(data.message);
+        }
+
+
+        alert("Booking updated successfully!");
+
+
+        cancelEdit();
+
+        loadBookings();
+
+    }
+
+    catch(error) {
+
+        console.error(error);
+
+        alert("Unable to update booking");
+
+    }
+
+}
+
+async function deleteBooking(id) {
+
+    const confirmDelete =
+        confirm("Are you sure you want to delete this booking?");
+
+
+    if (!confirmDelete) {
+        return;
+    }
+
+
+    try {
+
+        const response =
+            await fetch("/api/events/" + id, {
+
+                method: "DELETE"
+
+            });
+
+
+        const data =
+            await response.json();
+
+
+        if (!response.ok) {
+            throw new Error(data.message);
+        }
+        alert("Booking deleted successfully!");
+        loadBookings();
+    }
+    catch(error) {
+        console.error(error);
+        alert("Unable to delete booking");
+    }
+}
+function cancelEdit() {
+    document.getElementById("editBox").style.display =
+        "none";
+
+}
+loadBookings();
+</script>
+</body>  
+</html>

@@ -1,0 +1,303 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#f8f8f8;
+    color:#222;
+    line-height:1.6;
+}
+
+a{text-decoration:none;}
+
+section{padding:100px 8%;}
+
+.navbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 8%;
+    background:#030101;
+    color:#fff;
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+.logo{font-size:28px;font-weight:700;}
+.logo span,.hero span,.card i{color:gold;}
+
+.nav-links{
+    display:flex;
+    list-style:none;
+    gap:25px;
+}
+
+.nav-links a{color:#fff;}
+
+.btn,.btn2{
+    display:inline-block;
+    padding:12px 22px;
+    border-radius:50px;
+}
+
+.btn{
+    background:gold;
+    color:#111;
+    font-weight:600;
+}
+
+.btn2{
+    border:2px solid #111;
+    color:#111;
+}
+
+.hero,.contact{
+    display:grid;
+    gap:40px;
+    align-items:center;
+}
+
+.hero{
+    grid-template-columns:2fr 1fr;
+    background:#fff;
+}
+
+.contact{grid-template-columns:1fr 1fr;}
+
+.hero h1{
+    font-size:50px;
+    margin:20px 0;
+}
+
+.hero-buttons{
+    display:flex;
+    gap:15px;
+    margin-top:25px;
+}
+
+.schedule-card{
+    background:#111;
+    color:#fff;
+    padding:25px;
+    border-radius:15px;
+}
+
+.row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin:18px 0;
+    padding-bottom:10px;
+    border-bottom:1px solid #444;
+}
+
+.service-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:25px;
+    margin-top:35px;
+}
+
+.card{
+    background:#fff;
+    padding:20px;
+    border-radius:15px;
+    box-shadow:0 5px 15px rgba(0,0,0,.1);
+    text-align:center;
+}
+
+.card i{
+    font-size:35px;
+    margin:15px 0;
+}
+
+form{
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+}
+
+input,textarea{
+    padding:12px;
+    border:1px solid #ccc;
+    border-radius:8px;
+}
+
+textarea{height:120px;}
+
+form button{
+    background:#111;
+    color:#fff;
+    border:none;
+    padding:12px 25px;
+    border-radius:25px;
+    cursor:pointer;
+}
+
+@media(max-width:992px){
+
+.hero,.contact{grid-template-columns:1fr;}
+
+.hero h1{font-size:38px;}
+
+.navbar{
+    flex-direction:column;
+    gap:15px;
+}
+
+.nav-links{
+    flex-wrap:wrap;
+    justify-content:center;
+}
+
+}
+
+@media(max-width:768px){
+
+.hero h1{font-size:30px;}
+
+.hero-buttons{flex-direction:column;}
+
+section{padding:50px 5%;}
+
+.nav-links{gap:15px;}
+
+}
+
+@media(max-width:480px){
+
+.logo{font-size:22px;}
+
+.nav-links{
+    flex-direction:column;
+    align-items:center;
+}
+
+.hero h1{font-size:26px;}
+
+.btn,.btn2{
+    width:100%;
+    text-align:center;
+}
+
+}
+table{
+    height: 300px;
+    width: 1000px;
+}
+/* ================= CRUD BOOKING MANAGEMENT ================= */
+
+.booking-management {
+    background: #fff;
+    padding: 80px 8%;
+}
+
+.booking-management h2 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.crud-description {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #666;
+}
+
+
+/* EDIT BOX */
+
+.edit-box {
+    max-width: 600px;
+    margin: 0 auto 40px;
+    padding: 30px;
+    background: #111;
+    border-radius: 15px;
+    color: #fff;
+}
+
+.edit-box h3 {
+    margin-bottom: 20px;
+}
+
+.edit-box input,
+.edit-box select,
+.edit-box textarea {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.edit-box textarea {
+    height: 100px;
+}
+
+
+/* TABLE */
+
+.table-container {
+    overflow-x: auto;
+}
+
+.booking-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 30px;
+    background: #fff;
+}
+
+.booking-table th {
+    background: #111;
+    color: gold;
+    padding: 15px;
+    text-align: left;
+}
+
+.booking-table td {
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+}
+
+
+/* EDIT BUTTON */
+
+.edit-btn {
+    background: #e0b000;
+    color: #111;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+.edit-btn:hover {
+    background: gold;
+}
+
+
+/* DELETE BUTTON */
+
+.delete-btn {
+    background: #d9534f;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.delete-btn:hover {
+    background: #b52b27;
+}
+.cancel-btn {
+    background: #555;
+    color: white;
+    border: none;
+    padding: 12px 22px;
+    border-radius: 25px;
+    cursor: pointer;
+    margin-left: 10px;
+}
